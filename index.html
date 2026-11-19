@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suratirtha Khejuri (সুরতীর্থ খেজুরী) — Since 1977 | Official Portal</title>
+
+    <!-- Google Fonts: Playfair Display, Hind Siliguri, Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#FDF2F4',
+                            100: '#FADEE3',
+                            200: '#F2B8C2',
+                            600: '#7A1123',
+                            700: '#5B0A18',
+                            800: '#490713',
+                            900: '#3A050E',
+                            950: '#250309'
+                        },
+                        gold: {
+                            50: '#FCF9EE',
+                            100: '#F7EED0',
+                            200: '#EED68A',
+                            300: '#E2BE58',
+                            400: '#D4AF37',
+                            500: '#C59B27',
+                            600: '#A37E1C',
+                            700: '#7D5F12'
+                        },
+                        cream: '#FAF5EC',
+                        charcoal: '#231815'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Hind Siliguri', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        bangla: ['Hind Siliguri', 'sans-serif']
+                    },
+                    keyframes: {
+                        'notice-pulse': {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.85)' },
+                            '50%': { boxShadow: '0 0 0 14px rgba(212, 175, 55, 0)' }
+                        },
+                        'badge-glow': {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(239, 68, 68, 0.85)' },
+                            '50%': { boxShadow: '0 0 0 8px rgba(239, 68, 68, 0)' }
+                        },
+                        'blink-pill': {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.45' }
+                        },
+                        'page-enter': {
+                            '0%': { opacity: '0', transform: 'translateY(8px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    },
+                    animation: {
+                        'notice-pulse': 'notice-pulse 2s infinite',
+                        'badge-glow': 'badge-glow 1.8s infinite',
+                        'blink-pill': 'blink-pill 1.3s ease-in-out infinite',
+                        'page-enter': 'page-enter 0.22s ease-out forwards'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAF5EC;
+            color: #231815;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.13) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Sticky Glassmorphism Navigation on Landing Page */
+        .glass-header {
+            background: rgba(250, 245, 236, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        /* Top Highlighted Notice Ticker Marquee (Pauses on Hover) */
+        .notice-marquee-viewport {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .notice-marquee-track {
+            display: inline-flex;
+            align-items: center;
+            gap: 2.5rem;
+            white-space: nowrap;
+            will-change: transform;
+            animation: sk-marquee 30s linear infinite;
+        }
+        .notice-marquee-viewport:hover .notice-marquee-track,
+        .notice-marquee-viewport:focus-within .notice-marquee-track {
+            animation-play-state: paused;
+        }
+        @keyframes sk-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Standalone Route Page Visibility */
+        .route-page {
+            display: none;
+        }
+        .route-page.active {
+            display: block;
+            animation: page-enter 0.22s ease-out forwards;
+        }
+
+        /* Visible, Directly Clickable Native File Input Styling */
+        .sk-file-input {
+            display: block;
+            width: 100%;
+            font-size: 0.84rem;
+            color: #231815;
+            background-color: #ffffff;
+            border: 1.5px solid #d1d5db;
+            border-radius: 0.75rem;
+            padding: 0.45rem;
+            cursor: pointer;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .sk-file-input:hover {
+            border-color: #5B0A18;
+        }
+        .sk-file-input:focus {
+            outline: none;
+            border-color: #3A050E;
+            box-shadow: 0 0 0 3px rgba(91, 10, 24, 0.16);
+        }
+        .sk-file-input::file-selector-button {
+            margin-right: 0.85rem;
+            padding: 0.55rem 1.05rem;
+            border-radius: 0.55rem;
+            border: 1px solid #D4AF37;
+            background: linear-gradient(135deg, #5B0A18 0%, #3A050E 100%);
+            color: #FAF5EC;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        .sk-file-input::file-selector-button:hover {
+            opacity: 0.92;
+        }
+
+        .upload-dropzone.drag-over {
+            border-color: #5B0A18 !important;
+            background-color: #FDF2F4 !important;
+        }
+
+        /* Clean Isolated Print Styles */
+        @media print {
+            body {
+                background: #ffffff !important;
+                background-image: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            body * {
+                visibility: hidden !important;
+            }
+            .print-target-active,
+            .print-target-active * {
+                visibility: visible !important;
+            }
+            .print-target-active {
+                position: fixed !important;
+                top: 0 !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                z-index: 99999 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            @page {
+                size: A4 portrait;
+                margin: 10mm;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-charcoal antialiased min-h-screen flex flex-col selection:bg-maroon-700 selection:text-gold-200">
+
+    <!-- ==================== CUSTOM TOAST NOTIFICATION (NO alert/confirm) ==================== -->
+    <div id="toast-container" class="fixed top-5 left-1/2 -translate-x-1/2 z-[1200] hidden opacity-0 transition-all duration-300 no-print w-[92%] max-w-md">
+        <div id="toast-box" class="bg-maroon-950 text-white px-5 py-3.5 rounded-xl shadow-2xl border-2 border-gold-400 flex items-center gap-3 text-sm font-medium">
+            <i id="toast-icon" class="fa-solid fa-circle-check text-gold-300 text-lg shrink-0"></i>
+            <span id="toast-msg" class="leading-snug font-bangla">Notification</span>
+        </div>
+    </div>
+
+    <!-- ==================== NOTICE DETAIL MODAL ==================== -->
+    <div id="notice-detail-modal" class="fixed inset-0 z-[1150] hidden items-center justify-center bg-maroon-950/75 backdrop-blur-sm p-4 no-print" onclick="if(event.target === this) closeNoticeModal()">
+        <div class="bg-white w-full max-w-xl rounded-3xl shadow-2xl border-2 border-gold-400 overflow-hidden animate-page-enter">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-maroon-900 via-maroon-700 to-maroon-900 px-6 py-4 text-white flex items-center justify-between gap-3 border-b-4 border-gold-400">
+                <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 rounded-xl bg-red-600/90 border border-gold-300 flex items-center justify-center text-white text-lg shrink-0 shadow">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest bg-gold-400 text-maroon-950 px-2.5 py-0.5 rounded-full">Official Notice</span>
+                            <span id="modal-notice-category" class="text-[10px] font-bold uppercase tracking-wider bg-white/15 text-gold-200 px-2.5 py-0.5 rounded-full border border-gold-300/40"></span>
+                        </div>
+                        <p id="modal-notice-ref" class="text-[11px] text-gold-200/90 font-mono mt-1 truncate"></p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeNoticeModal()" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors shrink-0" aria-label="Close Notice">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 sm:p-7 space-y-4 max-h-[75vh] overflow-y-auto">
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-gray-200">
+                    <span id="modal-notice-date" class="inline-flex items-center gap-1.5 text-xs font-bold text-maroon-700 bg-gold-50 border border-gold-300 px-3 py-1 rounded-full">
+                        <i class="fa-regular fa-calendar"></i> <span></span>
+                    </span>
+                    <span id="modal-notice-new-pill" class="hidden text-[10px] font-extrabold uppercase tracking-wider bg-red-600 text-white px-2.5 py-0.5 rounded-full animate-blink-pill">NEW</span>
+                </div>
+
+                <div>
+                    <h3 id="modal-notice-title-bn" class="font-bangla text-xl sm:text-2xl font-bold text-maroon-700 leading-snug"></h3>
+                    <p id="modal-notice-title-en" class="font-serif text-sm sm:text-base font-bold text-gold-700 mt-1"></p>
+                </div>
+
+                <div id="modal-notice-body" class="bg-cream rounded-2xl p-4 sm:p-5 border border-gold-400/35 text-sm text-charcoal leading-relaxed font-bangla space-y-3"></div>
+
+                <div class="text-xs text-gray-500 pt-2 border-t border-gray-100 flex flex-wrap items-center justify-between gap-2">
+                    <span><strong>Issued by:</strong> Suratirtha Khejuri (Since 1977)</span>
+                    <span>Contact: <strong>9434943233 / 9073477782</strong></span>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-end gap-3 pt-2">
+                    <button type="button" id="modal-notice-action-btn" class="hidden px-5 py-2.5 rounded-xl bg-maroon-700 hover:bg-maroon-900 text-white font-bold text-sm shadow-md border border-gold-400/60 transition-colors items-center gap-2">
+                        <span>Apply Now</span>
+                        <i class="fa-solid fa-arrow-right text-gold-300"></i>
+                    </button>
+                    <button type="button" onclick="closeNoticeModal()" class="px-5 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-charcoal font-bold text-sm transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== IN-PAGE FINAL SUBMISSION CONFIRMATION MODAL ==================== -->
+    <div id="confirm-submit-modal" class="fixed inset-0 z-[1100] hidden items-center justify-center bg-maroon-950/75 backdrop-blur-sm p-4 no-print">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border-2 border-gold-400 overflow-hidden animate-page-enter">
+            <div class="bg-gradient-to-r from-maroon-900 to-maroon-700 px-6 py-4 text-white flex items-center gap-3 border-b-2 border-gold-400">
+                <div class="w-10 h-10 rounded-xl bg-gold-400/20 border border-gold-300/60 flex items-center justify-center text-gold-300 text-lg shrink-0">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif text-lg font-bold tracking-wide">Final Confirmation</h3>
+                    <p class="font-bangla text-xs text-gold-200">চূড়ান্ত সাবমিশন নিশ্চিত করুন</p>
+                </div>
+            </div>
+            <div class="p-6 space-y-4">
+                <p class="font-bangla text-sm text-charcoal leading-relaxed font-semibold">
+                    আপনি কি নিশ্চিতভাবে ফর্মটি সাবমিট করতে চান? সাবমিট করার পর আর এডিট করা যাবে না।
+                </p>
+                <div class="bg-red-50 border border-red-200 rounded-xl p-3.5 text-xs text-red-800 font-bangla font-semibold leading-relaxed flex items-start gap-2.5">
+                    <i class="fa-solid fa-lock text-red-600 mt-0.5 shrink-0"></i>
+                    <span>সতর্কতা: একবার ফর্ম সাবমিট হয়ে গেলে পরে আর কোনো তথ্য পরিবর্তন (Edit) করা যাবে না।</span>
+                </div>
+                <div class="flex flex-col-reverse sm:flex-row items-center justify-end gap-3 pt-2">
+                    <button type="button" onclick="closeConfirmModal()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-charcoal font-bold text-sm transition-colors">
+                        Review Again
+                    </button>
+                    <button type="button" onclick="confirmFinalAdmissionSubmit()" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-maroon-700 hover:bg-maroon-900 text-white font-bold text-sm shadow-lg border border-gold-400/60 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check-double text-gold-300"></i>
+                        <span>Yes, Submit &amp; Lock</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- COMPACT TOP BAR FOR STANDALONE ROUTES (Hidden on #/home)                  -->
+    <!-- ========================================================================= -->
+    <header id="standalone-topbar" class="hidden sticky top-0 z-50 bg-maroon-900 text-white border-b-4 border-gold-400 shadow-lg no-print">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+            <button type="button" id="standalone-back-btn" onclick="navigateTo('#/home')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-gold-200 hover:text-white text-xs sm:text-sm font-bold transition-colors border border-gold-400/30">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span id="standalone-back-label">Back to Home</span>
+            </button>
+
+            <div class="flex items-center gap-2.5 min-w-0">
+                <div id="logo-standalone" class="w-10 h-10 shrink-0"></div>
+                <div class="hidden sm:block min-w-0">
+                    <p class="font-serif font-extrabold text-sm tracking-wide leading-tight truncate">SURATIRTHA KHEJURI</p>
+                    <p id="standalone-page-subtitle" class="text-[11px] text-gold-200 leading-tight truncate">Student Portal</p>
+                </div>
+            </div>
+
+            <button type="button" id="standalone-logout-btn" onclick="handleLogout()" class="hidden inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-600/90 hover:bg-red-700 text-white text-xs font-bold transition-colors shadow">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- PAGE 1: LANDING PAGE (#/home)                                             -->
+    <!-- ========================================================================= -->
+    <div id="page-home" class="route-page active flex-col min-h-screen">
+
+        <!-- Sticky Glassmorphism Navbar -->
+        <header class="sticky top-0 z-50 glass-header border-b-2 border-gold-400/60 shadow-sm no-print">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20 gap-3">
+
+                    <!-- Circular SVG Emblem & Brand -->
+                    <button type="button" onclick="navigateTo('#/home')" class="flex items-center gap-3 text-left focus:outline-none group shrink-0">
+                        <div id="logo-navbar" class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 transition-transform duration-300 group-hover:scale-105"></div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h1 class="font-serif font-extrabold text-base sm:text-xl text-maroon-700 tracking-wide leading-tight">
+                                    SURATIRTHA KHEJURI
+                                </h1>
+                                <span class="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wider bg-maroon-700 text-gold-200 px-2.5 py-0.5 rounded-full border border-gold-400/60">
+                                    Since 1977
+                                </span>
+                            </div>
+                            <p class="font-bangla text-xs sm:text-sm font-bold text-gold-600 leading-tight">সুরতীর্থ খেজুরী</p>
+                        </div>
+                    </button>
+
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden lg:flex items-center gap-5 text-sm font-semibold text-maroon-700">
+                        <button type="button" onclick="navigateTo('#/home')" class="hover:text-gold-600 transition-colors px-1.5 py-1">Home</button>
+
+                        <!-- Highlighted Notices Nav Link with Pulsing Indicator Dot -->
+                        <button type="button" onclick="scrollToHomeSection('section-notices')" class="relative inline-flex items-center gap-1.5 hover:text-gold-600 transition-colors px-2 py-1 rounded-lg bg-maroon-50/80 border border-gold-400/50 text-maroon-700 font-bold">
+                            <span>Notices</span>
+                            <span id="nav-notice-dot" class="hidden relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-80"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600 border border-gold-200"></span>
+                           
