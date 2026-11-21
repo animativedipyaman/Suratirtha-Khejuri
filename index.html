@@ -1359,7 +1359,7 @@
                             </span>
                         </label>
                     </div>
-                    <button type="submit" class="w-full py-3.5 rounded-xl bg-gold-400 hover:bg-gold-500 text-maroon-950 font-extrabold text-sm shadow-lg">Confirm &amp; Create Account</button>
+                    <button type="submit" id="signup-submit-btn" class="w-full py-3.5 rounded-xl bg-gold-400 hover:bg-gold-500 text-maroon-950 font-extrabold text-sm shadow-lg transition-opacity">Confirm &amp; Create Account</button>
                 </form>
             </div>
         </div>
@@ -1921,6 +1921,7 @@
                 await fetch(GOOGLE_SHEET_URL, {
                     method: 'POST',
                     mode: 'no-cors',
+                    keepalive: true,
                     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify(payload)
                 });
@@ -2005,49 +2006,49 @@
                 nav_language: 'ভাষা',
                 nav_settings: 'সেটিংস',
                 nav_care: 'কাস্টমার কেয়ার',
-                nav_logout: 'লগআউট',
-                drawer_nav: 'নেভিগেশন',
-                drawer_prefs: 'পছন্দ ও সহায়তা',
+                nav_logout: 'লগ আউট',
+                drawer_nav: 'মেনু',
+                drawer_prefs: 'সেটিংস ও সহায়তা',
                 cta_admission: 'ভর্তি চলছে',
                 cta_results: 'রেজাল্ট ডাউনলোড',
                 badge_notice: 'বিজ্ঞপ্তি',
                 hero_badge: 'সঙ্গীত ও সংস্কৃতি শিক্ষা প্রতিষ্ঠান • স্থাপিত ১৯৭৭',
-                hero_desc: 'প্রায় পাঁচ দশক ধরে খেজুরী ও পূর্ব মেদিনীপুরে গান, নাচ, আবৃত্তি, তবলা এবং অঙ্কন শিক্ষায় নিবেদিতপ্রাণ ঐতিহ্যবাহী প্রতিষ্ঠান।',
+                hero_desc: 'প্রায় পাঁচ দশক ধরে গান, নাচ, আবৃত্তি, তবলা ও অঙ্কনে বাংলার শাস্ত্রীয় ও সৃজনশীল ঐতিহ্য লালন করে চলেছে।',
                 founder_kicker: 'আমাদের শ্রদ্ধেয় প্রতিষ্ঠাতা',
                 founder_role: 'প্রতিষ্ঠাতা • সুরতীর্থ খেজুরী (স্থাপিত ১৯৭৭)',
-                founder_tribute: '"১৯৭৭ সালে শ্রী সুনীল কুমার দাস এক মহৎ স্বপ্ন নিয়ে সুরতীর্থ খেজুরীর ভিত্তিপ্রস্তর স্থাপন করেন—খেজুরী ও পূর্ব মেদিনীপুরের প্রতিটি ঘরে ভারতীয় শাস্ত্রীয় সঙ্গীত, নৃত্য, আবৃত্তি, তবলা ও চারুকলার আলো পৌঁছে দেওয়া। তাঁর আজীবন সাধনা আজও প্রজন্মের পর প্রজন্মকে অনুপ্রাণিত করে।"',
+                founder_tribute: '“১৯৭৭ সালে শ্রী সুনীল কুমার দাস খেজুরী ও পূর্ব মেদিনীপুরের প্রতিটি ঘরে ভারতীয় শাস্ত্রীয় সঙ্গীত, নৃত্য, আবৃত্তি, তবলা ও চিত্রকলার আলো পৌঁছে দেওয়ার মহান লক্ষ্য নিয়ে সুরতীর্থ খেজুরীর ভিত্তি স্থাপন করেন। তাঁর আজীবনের সাধনা আজও প্রজন্মের পর প্রজন্মকে অনুপ্রাণিত করে।”',
                 notice_tag: 'অফিশিয়াল ঘোষণা',
-                notice_heading: 'বিজ্ঞপ্তি ফলক',
+                notice_heading: 'অফিশিয়াল নোটিশ বোর্ড',
                 dept_tag: 'আমাদের কোর্সসমূহ',
                 dept_heading: 'আমাদের বিভাগসমূহ',
-                dept_vocal: 'হিন্দুস্তানি শাস্ত্রীয় সঙ্গীত, রবীন্দ্রসঙ্গীত, নজরুলগীতি, লোকগীতি ও সুরসাধনার সুশৃঙ্খল প্রশিক্ষণ।',
-                dept_dance: 'শাস্ত্রীয় নৃত্য, মুদ্রা, রবীন্দ্রনৃত্য ও সৃজনশীল মঞ্চ পরিবেশনার প্রশিক্ষণ।',
-                dept_recitation: 'বাংলা কবিতা আবৃত্তি, শুদ্ধ উচ্চারণ, কণ্ঠস্বর নিয়ন্ত্রণ ও মঞ্চ পরিবেশনা।',
-                dept_tabla: 'তাল, লয়, কায়দা, টুকরা, একক বাদন এবং সঙ্গতের সুশৃঙ্খল প্রশিক্ষণ।',
-                dept_drawing: 'পেন্সিল স্কেচ, প্যাস্টেল, জলরং, প্রাকৃতিক দৃশ্য এবং চারুকলা ডিপ্লোমা প্রস্তুতি।',
-                dept_cta_desc: 'মোবাইল নম্বর দিয়ে অ্যাকাউন্ট তৈরি করে Sign In করুন, অনলাইন অ্যাডমিশন ফর্ম পূরণ করুন এবং My Profile থেকে Student ID Card ডাউনলোড করুন।',
+                dept_vocal: 'হিন্দুস্তানি শাস্ত্রীয় সঙ্গীত, রবীন্দ্রসঙ্গীত, নজরুলগীতি, লোকসঙ্গীত ও সুরসাধনার সুশৃঙ্খল প্রশিক্ষণ।',
+                dept_dance: 'শাস্ত্রীয় নৃত্য, অভিব্যক্তি, মুদ্রা, রবীন্দ্রনৃত্য ও সৃজনশীল মঞ্চ পরিবেশনার প্রশিক্ষণ।',
+                dept_recitation: 'বাংলা কবিতা আবৃত্তি, শুদ্ধ উচ্চারণ, কণ্ঠস্বর নিয়ন্ত্রণ ও মঞ্চ উপস্থাপনার অনুশীলন।',
+                dept_tabla: 'তাল, লয়, কায়দা, টুকরা, একক বাদন ও সঙ্গতের নিখুঁত প্রশিক্ষণ।',
+                dept_drawing: 'পেন্সিল স্কেচ, প্যাস্টেল, জলরং, প্রকৃতিচিত্র ও চারুকলা ডিপ্লোমার প্রস্তুতি।',
+                dept_cta_desc: 'মোবাইল নম্বর দিয়ে অ্যাকাউন্ট তৈরি করুন, প্রোফাইলে সাইন ইন করে অ্যাডমিশন ফর্ম পূরণ করুন এবং অফিশিয়াল স্টুডেন্ট আইডি কার্ড ডাউনলোড করুন।',
                 contact_tag: 'যোগাযোগ করুন',
-                contact_heading: 'যোগাযোগ ও ঠিকানা',
+                contact_heading: 'ঠিকানা ও যোগাযোগ',
                 contact_addr: 'ঠিকানা',
                 contact_phone: 'ফোন সহায়তা',
                 contact_email: 'ইমেইল সহায়তা',
-                contact_social: 'সোশ্যাল মিডিয়া',
+                contact_social: 'সোশ্যাল মিডিয়ায় যুক্ত হন',
                 footer_contact: 'যোগাযোগ ও সহায়তা',
                 footer_links: 'গুরুত্বপূর্ণ লিংক',
                 settings_sub: 'থিম, ভাষা এবং ফন্ট সাইজ',
                 settings_theme: 'ডিসপ্লে থিম',
-                settings_theme_desc: 'ব্রাইট মোড এবং ডার্ক মোড পরিবর্তন করুন',
+                settings_theme_desc: 'ব্রাইট মোড ও ডার্ক মোড পরিবর্তন করুন',
                 settings_lang: 'ভাষা / Language',
-                settings_lang_desc: 'ওয়েবসাইটের ভাষা নির্বাচন করুন',
-                settings_size: 'লেখার আকার',
+                settings_lang_desc: 'পোর্টালের ভাষা নির্বাচন করুন',
+                settings_size: 'অক্ষরের আকার',
                 res_title: 'পরীক্ষার রেজাল্ট ডাউনলোড',
                 res_sub: 'সেশন, বিভাগ এবং রোল নম্বর / স্টুডেন্ট আইডি দিয়ে রেজাল্ট খুঁজুন',
                 res_session: 'পরীক্ষার সেশন *',
                 res_dept: 'বিভাগ *',
                 res_roll: 'রোল নম্বর / স্টুডেন্ট আইডি *',
                 res_search_btn: 'রেজাল্ট খুঁজুন',
-                res_print_btn: 'রেজাল্ট ডাউনলোড / প্রিন্ট করুন',
-                pay_heading: 'ভর্তি ফি প্রদান (₹৫০০ ইউপিআই)'
+                res_print_btn: 'রেজাল্ট ডাউনলোড / প্রিন্ট',
+                pay_heading: 'ভর্তি ফি প্রদান (UPI মাধ্যমে ₹৫০০)'
             }
         };
 
@@ -2566,7 +2567,7 @@
             if (c) { h.classList.remove('hidden'); h.textContent = pw === c ? '✓ Passwords match' : '✗ Passwords do not match'; h.className = `mt-1 text-[11px] font-bold ${pw === c ? 'text-green-600' : 'text-red-600'}`; }
             else h.classList.add('hidden');
         }
-        function handleSignup(e) {
+        async function handleSignup(e) {
             e.preventDefault();
             const mobile = document.getElementById('signup-mobile').value.replace(/\D/g, '');
             const pw = document.getElementById('signup-pw').value;
@@ -2579,13 +2580,37 @@
             if (!terms) return showAuthError('Please accept the Terms & Conditions checkbox.');
             const users = getUsers();
             if (users[mobile]) return showAuthError('Account already exists. Please Sign In.');
-            users[mobile] = { mobile, password: pw, submitted: false, admission: null };
+
+            const btn = document.getElementById('signup-submit-btn');
+            if (btn) {
+                btn.disabled = true;
+                btn.classList.add('opacity-70', 'cursor-not-allowed');
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Creating Account...';
+            }
+
+            const timestamp = new Date().toISOString();
+            const synced = await sendToGoogleSheet({
+                action: 'registration',
+                timestamp,
+                mobile,
+                termsAccepted: 'Yes',
+                status: 'Account Created'
+            });
+
+            users[mobile] = { mobile, password: pw, submitted: false, admission: null, registeredAt: timestamp };
             saveUsers(users);
+
+            if (btn) {
+                btn.disabled = false;
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                btn.textContent = 'Confirm & Create Account';
+            }
+
             document.getElementById('form-signup').reset(); updatePasswordChecklist();
             switchAuthTab('signin', true);
             document.getElementById('signin-mobile').value = mobile;
-            showAuthSuccess('Account created! Please Sign In now to open My Profile.');
-            showToast('Account created! Please Sign In.');
+            showAuthSuccess(synced ? 'Account created & synced! Please Sign In now to open My Profile.' : 'Account created! Please Sign In now to open My Profile.');
+            showToast(synced ? 'Account created & synced with Google Sheet!' : 'Account created! Please Sign In.');
         }
         function handleSignIn(e) {
             e.preventDefault();
